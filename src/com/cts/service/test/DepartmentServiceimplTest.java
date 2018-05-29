@@ -1,4 +1,4 @@
-package com.cts.service.test;
+/*package com.cts.service.test;
 
 import com.cts.bean.Department;
 import com.cts.bean.EmployeeDetails;
@@ -12,7 +12,7 @@ public class DepartmentServiceimplTest {
 	private static EmployeeDetailService employeeService;
 
 	public static void init() {
-		/*
+		
 		 * Department dept4=new Department(3,"balaji"); Department dept5=new
 		 * Department(14,"vj");
 		 * 
@@ -21,7 +21,7 @@ public class DepartmentServiceimplTest {
 		 * Department dept6=new Department(1,"vishnu"); department.update(dept6);
 		 * 
 		 * department.display();
-		 */
+		 
 		employeeService = new EmployeeDetailsServiceimpl();
 
 		EmployeeDetails empDetails;
@@ -45,9 +45,9 @@ public class DepartmentServiceimplTest {
 
 		// departmentService.display();
 
-		/*
+		
 		 * department.delete(1); department.display();
-		 */
+		 
 
 	}
 
@@ -67,9 +67,10 @@ public class DepartmentServiceimplTest {
 		System.out.println(departmentService.getEmployees(1, 9000));
 		System.out.println(departmentService.getAlldepartments());
 
-		/*
+		
 		 * departmentService.deleteEmployeeDetailsToDepartment(101,1);
 		 * System.out.println(departmentService.getAlldepartments());
-		 */
+		 
 	}
 }
+*/

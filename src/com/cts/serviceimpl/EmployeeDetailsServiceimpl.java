@@ -1,27 +1,53 @@
 package com.cts.serviceimpl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.cts.bean.EmployeeDetails;
+import com.cts.dbconnection.DBConnection;
 import com.cts.service.EmployeeDetailService;
 
 public class EmployeeDetailsServiceimpl implements EmployeeDetailService {
 
 	private ArrayList<EmployeeDetails> empList = new ArrayList<EmployeeDetails>();
-
+private Connection con;
+private PreparedStatement preparestatement;
 	@Override
 	public boolean add(EmployeeDetails emp) {
-		if (get(emp.getId()) != null) {
+		con=DBConnection.getConnection();
+		try {
+			preparestatement=con.prepareStatement("insert into employees values(?,?,?,?);");
+			preparestatement.setInt(1, emp.getId());
+			preparestatement.setString(2,emp.getName());
+			preparestatement.setInt(3, emp.getSalary());
+			preparestatement.setInt(4, emp.getDeptId());
+			preparestatement.executeUpdate();
+			return true;
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+		/*if (getEmployee(emp.getId()) != null) {
 			return false;
 		}
 		empList.add(emp);
 		return true;
+		
 	}
-
+*/
 	@Override
 	public boolean update(EmployeeDetails emp) {
-		if (get(emp.getId()) == null) {
+		
+	
+			
+		if (getEmployee(emp.getId()) == null) {
 			return false;
 		}
 
@@ -33,7 +59,19 @@ public class EmployeeDetailsServiceimpl implements EmployeeDetailService {
 
 	@Override
 	public boolean delete(int id) {
-		EmployeeDetails emp2 = get(id);
+		con=DBConnection.getConnection();
+		try {
+			preparestatement=con.prepareStatement("DELETE FROM employees where ID = ?");
+			 preparestatement.setInt(1, id);
+			 preparestatement.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			return false;
+		}
+	}
+		/*EmployeeDetails emp2 = getEmployee(id);
 		if (emp2 != null) {
 			empList.remove(emp2);
 		}
@@ -41,9 +79,9 @@ public class EmployeeDetailsServiceimpl implements EmployeeDetailService {
 
 		return true;
 	}
-
+*/
 	@Override
-	public EmployeeDetails get(int id) {
+	public EmployeeDetails getEmployee(int id) {
 		for (EmployeeDetails emp : empList) {
 			if (emp.getId() == id) {
 				return emp;
@@ -89,7 +127,7 @@ public class EmployeeDetailsServiceimpl implements EmployeeDetailService {
 				salaryList.add(emp);
 			}
 			}	
-	return empList;
+	return salaryList;
 		
 	}
 
@@ -101,7 +139,7 @@ public class EmployeeDetailsServiceimpl implements EmployeeDetailService {
 				salaryList.add(emp);
 			}
 			}
-		return empList;
+		return salaryList;
 		
 		
 	}

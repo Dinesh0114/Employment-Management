@@ -8,7 +8,7 @@ public interface EmployeeDetailService {
 public boolean add(EmployeeDetails emp);
 public boolean update(EmployeeDetails emp);
 public boolean delete(int id);
-public EmployeeDetails get(int id);
+public EmployeeDetails getEmployee(int id);
 
 public List<EmployeeDetails> get();
 public void display(EmployeeDetails emp);

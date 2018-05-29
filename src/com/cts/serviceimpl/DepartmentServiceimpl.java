@@ -1,4 +1,4 @@
- package com.cts.serviceimpl;
+/* package com.cts.serviceimpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,17 +109,17 @@ public class DepartmentServiceimpl implements DepartmentService {
 	public void display(Department dept) {
 		System.out.println(dept.getId());
 		System.out.println(dept.getName());
-/*	System.out.println(dept.getEmployee().getId());
+	System.out.println(dept.getEmployee().getId());
 	System.out.println(dept.getEmployee().getName());
 	System.out.println(dept.getEmployee().getSalary());
-		*/
+		
 		
 	}
 
 	@Override
 	public boolean addEmployeeDetailsToDepartment(int empid, int deptid) {
 		
-		EmployeeDetails emp=employeeDetailService.get(empid);
+		EmployeeDetails emp=employeeDetailService.getEmployee(empid);
 		Department dept=getdepartment(deptid);
 		
 		List<EmployeeDetails> empList=getallEmployees(deptid);
@@ -144,7 +144,7 @@ public class DepartmentServiceimpl implements DepartmentService {
 	}
 	@Override
 	public boolean deleteEmployeeDetailsToDepartment(int empid, int deptid) {
-		EmployeeDetails emp=employeeDetailService.get(empid);
+		EmployeeDetails emp=employeeDetailService.getEmployee(empid);
 		Department dept=getdepartment(deptid);
 		if(emp == null  || dept ==null)
 		{
@@ -213,3 +213,4 @@ public class DepartmentServiceimpl implements DepartmentService {
 	}
 
 	
+*/
